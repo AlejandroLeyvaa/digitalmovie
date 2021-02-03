@@ -1,0 +1,139 @@
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} */
+:root {
+  --font-size-h2: 2rem;
+  --font-size-p: 1.8rem;
+  --font-size-span: 1.4rem;
+  --font-size-button: 1.4rem;
+  --columns: 4;
+  --gap: 1.6rem;
+  --primary-color: #161616;
+  --primary-light: #3c3c3c;
+  --primary-dark: #000000;
+
+  --secondary-color: #e01937;
+  --secondary-light: #ff5b61;
+  --secondary-dark: #a60011;
+
+  --text-color: #ffffff;
+}
+
+a,
+body,
+div,
+ul,
+li,
+section,
+main,
+header,
+menu,
+nav,
+footer,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+form,
+input,
+figure,
+image,
+picture,
+span {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ffffff;
+}
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.Header {
+  min-width: 320px;
+  width: 100%;
+  color: var(--text-color);
+}
+
+.Header-items {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header-logo,
+.Header-icons {
+  width: 50%;
+  padding: 1.6rem;
+}
+
+.Header-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.Header-icons h2 {
+  margin: 0 1.6rem;
+}
+
+/* Main */
+
+.Main {
+  color: var(--text-color);
+}
+
+.Main a {
+  color: var(--text-color);
+  font-size: 1.8rem;
+}
+
+/* Movies */
+
+.Section-title {
+  color: var(--secondary-light);
+  padding: 1.6rem;
+}
+
+.Movies {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.Movie-container {
+  margin: 0.8rem;
+}
+
+.Movie-figure {
+  width: 120px;
+  /* height: 7%; */
+}
+
+.Movie-image {
+  border-radius: 10px;
+}
