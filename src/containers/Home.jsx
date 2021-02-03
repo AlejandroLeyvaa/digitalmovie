@@ -37,6 +37,21 @@ const Home = () => {
             </div>
           ))}
         </div>
+
+        <h2 className='Section-title'>TV Show</h2>
+        <div className="Movies">
+          {moviesList.map((movie) => (
+            <div  key={movie.id} className="Movie-container">
+              <figure className='Movie-figure'>
+                <img className='Movie-image' src={movie.medium_cover_image} alt={''} />
+              </figure>
+              <div>
+                <h2>{movie.title}</h2>
+                <span>{movie.date_uploaded}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </>
     );
   }

@@ -123,6 +123,8 @@ img {
 .Movies {
   display: flex;
   overflow-x: scroll;
+  scrollbar-color: var(--primary-light) var(--primary-color);
+  scrollbar-width: thin;
 }
 
 .Movie-container {
