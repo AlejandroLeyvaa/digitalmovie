@@ -17,7 +17,7 @@ const Movie = ({ id, title, image, year, rating }) => {
     } else if (ratingToNumber > 9 && ratingToNumber <= 10) {
       return 500;
     } else {
-      return Math.ceil(Math.random() * 100);
+      return 100;
     }
   };
 

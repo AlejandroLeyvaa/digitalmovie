@@ -7,7 +7,8 @@ import AppContext from '../context/AppContext';
 
 const Home = () => {
   const [moviesList, setMovies] = useState(null);
-  const { state, addToFavs } = useContext(AppContext);
+  const { state, addToFavs, addTotal } = useContext(AppContext);
+  const { cart } = state;
   const history = useHistory();
 
   const auth = new Auth();
@@ -28,7 +29,19 @@ const Home = () => {
     setMovies([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
   }, []);
 
+  const handleSum = () => {
+    const reducer = (accumulator, currentValue) =>{
+      console.log('accumm', accumulator, 'current', currentValue);
+      return accumulator + currentValue.price;
+    }
+    const sum = cart.reduce(reducer, 0);
+    console.log(sum);
+    return sum;
+  };
+
   const handleClick = () => {
+    const total = handleSum();
+    addTotal(total);
     history.push('/checkout/payment');
   }
 
@@ -135,7 +148,7 @@ const Home = () => {
               <div>
                 <h2>{item.title}</h2>
                 <br />
-                <span>Rating: {item.price}</span>
+                <span>Price: {item.price}</span>
               </div>
             </div>
           ))}
