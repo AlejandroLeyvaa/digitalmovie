@@ -1,57 +1,150 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import Movie from '../components/Movie.jsx';
 
 import Auth from '../authentification/AuthUsers';
 import AppContext from '../context/AppContext';
 
 const Home = () => {
   const [moviesList, setMovies] = useState(null);
+  const { state, addToFavs } = useContext(AppContext);
+  const history = useHistory();
+
   const auth = new Auth();
-  const API = 'https://yts.mx/api/v2/list_movies.json';
+  const API = `http://localhost:3000/api/movies`;
 
   useEffect(() => {
-    fetch(API)
-      .then((response) => response.json())
-      .then(({ data: { movies } }) => {
-        console.log(movies);
-        setMovies(movies);
-      });
+    // fetch(API)
+    //   .then((response) => response.json())
+    //   .then(({ data: { items } }) => {
+    //     console.log(items);
+    //     let arr = [];
+    //     for (let i = 0; i < 30; i++) {
+    //       arr.push(items[i]);
+    //     }
+    //     console.log(arr);
+    //     setMovies(arr);
+    //   });
+    setMovies([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
   }, []);
+
+  const handleClick = () => {
+    history.push('/checkout/payment');
+  }
+
+  const dragOver = (e) => {
+    e.preventDefault();
+    console.log('Over', e.target);
+    e.target.classList.add('dragOver');
+  };
+
+  const dragLeave = (e) => {
+    e.preventDefault();
+    console.log('End', e.target);
+    e.target.classList.remove('dragOver');
+  };
+
+  console.log('state', state);
+
+  const drop = (e) => {
+    e.preventDefault();
+    console.log('Drop', e);
+    console.log('Drop', e.target);
+    e.target.classList.remove('dragOver');
+    const data = e.dataTransfer.getData('text');
+    const splitData = data.split(',');
+    console.log('s', splitData);
+    const movie = {
+      title: splitData[0],
+      image: splitData[1],
+      rating: splitData[2],
+    };
+    addToFavs(movie);
+    // e.target.classList.add('dragOver');
+    // const id = e.dataTransfer.getData('text');
+    // const element = document.getElementById(id);
+    // console.log(id);
+    // console.log(element);
+    // e.dataTransfer.effectAllowed = "copy";
+    // e.target.appendChild(element);
+    // const movies = document.querySelector('.Movies');
+    // const div = document.createElement('div');
+    // div.className = 'Movies-favs';
+    // movies.appendChild(div);
+    // element.parentElement.classList.add('dropped');
+  };
 
   if (moviesList === null) {
     return <h1>Loading...</h1>;
   } else {
     return (
       <>
-        <h2 className='Section-title'>Popular Movie</h2>
-        <div className="Movies">
-          {moviesList.map((movie) => (
-            <div  key={movie.id} className="Movie-container">
-              <figure className='Movie-figure'>
-                <img className='Movie-image' src={movie.medium_cover_image} alt={''} />
-              </figure>
+        <section className="Wishlist">
+          <h2 className="Section-title">Wish List</h2>
+          <div
+            className="Movies-favs"
+            onDragOver={dragOver}
+            onDragLeave={dragLeave}
+            onDrop={drop}
+          >
+            <h2>Drop Movies</h2>
+          </div>
+        </section>
+        <section className="Movies">
+          {state.favs.map((item) => (
+            <div key={Math.random()} className="Movie-container">
+              {/* <figure className="Movie-figure">
+                <img
+                  className="Movie-image"
+                  src={item.image}
+                  alt={item.title}
+                />
+              </figure> */}
               <div>
-                <h2>{movie.title}</h2>
-                <span>{movie.date_uploaded}</span>
+                <h2>{item.title}</h2>
+                <br />
+                <span>Rating: {item.rating}</span>
               </div>
             </div>
           ))}
-        </div>
-
-        <h2 className='Section-title'>TV Show</h2>
-        <div className="Movies">
+        </section>
+        <h2 className="Section-title">Popular Movie</h2>
+        <section className="Movies">
           {moviesList.map((movie) => (
-            <div  key={movie.id} className="Movie-container">
-              <figure className='Movie-figure'>
-                <img className='Movie-image' src={movie.medium_cover_image} alt={''} />
-              </figure>
+            <Movie
+              key={Math.random() + 'movie.id'}
+              id={'movie.id'}
+              title={'movie.title'}
+              image={'movie.image'}
+              year={'movie.year'}
+              rating={'movie.imDbRating'}
+            />
+          ))}
+          {state.cart.length !== 0 && <h2 className="Section-title">Cart</h2>}
+        </section>
+        <section className="Movies">
+          {state.cart.map((item) => (
+            <div key={Math.random()} className="Movie-container">
+              {/* <figure className="Movie-figure">
+                <img
+                  className="Movie-image"
+                  src={item.image}
+                  alt={item.title}
+                />
+              </figure> */}
               <div>
-                <h2>{movie.title}</h2>
-                <span>{movie.date_uploaded}</span>
+                <h2>{item.title}</h2>
+                <br />
+                <span>Rating: {item.price}</span>
               </div>
             </div>
           ))}
-        </div>
+        </section>
+        {state.cart.length !== 0 && (
+          <section className="Movies-payment">
+            <button onClick={handleClick}>Go to Pay!</button>
+          </section>
+        )}
       </>
     );
   }

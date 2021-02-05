@@ -75,6 +75,14 @@ img {
   height: auto;
 }
 
+button {
+  height: 32px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
 .Header {
   min-width: 320px;
   width: 100%;
@@ -85,6 +93,7 @@ img {
   height: 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .Header-logo,
@@ -115,6 +124,10 @@ img {
 
 /* Movies */
 
+main section {
+  margin: 1.6rem 0;
+}
+
 .Section-title {
   color: var(--secondary-light);
   padding: 1.6rem;
@@ -127,13 +140,49 @@ img {
   scrollbar-width: thin;
 }
 
-.Movie-container {
-  margin: 0.8rem;
+.Movie-container,
+.Movies-favs, .Movies-payment {
+  margin: 0.8rem 0.8rem 0.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Movies-favs {
+  border: 3px dashed var(--secondary-light);
+  width: 100px;
+  height: 150px;
+  align-items: center;
+}
+
+@media screen and (max-width: 980px) {
+  .Wishlist {
+    display: none;
+  }
+}
+
+.dragOver {
+  border-color: #ffffff;
+  animation: scale 0.5s;
+  transform: scale(1.2);
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.dropped {
+  border: none;
 }
 
 .Movie-figure {
-  width: 120px;
-  /* height: 7%; */
+  width: 104px;
 }
 
 .Movie-image {
