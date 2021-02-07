@@ -13,8 +13,8 @@ const Payment = () => {
     removeItem(item, index);
   };
 
-  const goTo = () => {
-    history.push('/');
+  const goTo = (route) => () => {
+    history.push(route);
   };
 
   const touch = (e) => {
@@ -35,7 +35,7 @@ const Payment = () => {
           <div
             onTouchStart={touch}
             onTouchEnd={touchEnd}
-            onClick={goTo}
+            onClick={goTo('/')}
             className="empty"
           >
             <h2 className="">
@@ -46,7 +46,7 @@ const Payment = () => {
         {cart.length > 0 && (
           <div className="Payment-total">
             <h2>Total: {total}</h2>
-            <button className='Payment-total-button'>Go to Pay!!!</button>
+            <button onClick={goTo('/checkout/success')} className='Payment-total-button'>Buy now</button>
           </div>
         )}
         <div className="Payment-movies">

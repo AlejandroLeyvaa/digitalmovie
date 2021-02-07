@@ -22,10 +22,9 @@ const Movie = ({ id, title, image, year, rating }) => {
   };
 
   const dragStart = (e) => {
-    console.log('DRAG START', e.target);
-    e.dataTransfer.setData('text', `${title}, ${image}, ${rating}`);
+    const transfer = e.dataTransfer;
+    transfer.setData('text', `${title}, ${image}, ${rating}`);
     e.dataTransfer.effectAllowed = 'copy';
-    console.log(e.dataTransfer.dropEffect);
   };
 
   const handleClick = () => {
@@ -36,8 +35,6 @@ const Movie = ({ id, title, image, year, rating }) => {
       price: moviePrice,
     };
     addToCart(data);
-    console.log('handleClick',data);
-    console.log(state);
   };
 
   return (
