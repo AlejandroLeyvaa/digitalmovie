@@ -8,7 +8,7 @@ const Payment = () => {
   const { state, removeItem, addNewOrder } = useContext(AppContext);
   const { cart, total, buyer } = state;
   const history = useHistory();
-  const clientId = config.clientIdPaypal;
+  const clientId = 'AW7OxdrMRuCSrK1bGOBz0hZUIXLEaUkUV0ZPlVduM5M1nPEeC4M9OAnAbUP2CVqee0laXi9g3c33yOPc';
 
   const paypalOptions = {
     clientId,
