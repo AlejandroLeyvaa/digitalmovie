@@ -88,7 +88,7 @@ const Payment = () => {
                 <h2>{item.title}</h2>
               </div>
               <figure>
-                <img src={item.figure} alt={item.title} />
+                <img src={item.image} alt={item.title} />
               </figure>
               <div>
                 <button onClick={handleRemove(item, index)}>Delete</button>

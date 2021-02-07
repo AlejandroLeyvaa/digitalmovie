@@ -4,6 +4,7 @@ import Movie from '../components/Movie.jsx';
 
 import Auth from '../authentification/AuthUsers';
 import AppContext from '../context/AppContext';
+import config from '../config';
 
 const Home = () => {
   const [moviesList, setMovies] = useState(null);
@@ -12,21 +13,20 @@ const Home = () => {
   const history = useHistory();
 
   const auth = new Auth();
-  const API = `http://localhost:3000/api/movies`;
+  const API = config.apiURL;
 
   useEffect(() => {
-    // fetch(API)
-    //   .then((response) => response.json())
-    //   .then(({ data: { items } }) => {
-    //     console.log(items);
-    //     let arr = [];
-    //     for (let i = 0; i < 30; i++) {
-    //       arr.push(items[i]);
-    //     }
-    //     console.log(arr);
-    //     setMovies(arr);
-    //   });
-    setMovies([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+    fetch(API)
+      .then((response) => response.json())
+      .then(({ data: { items } }) => {
+        console.log(items);
+        let arr = [];
+        for (let i = 0; i < 30; i++) {
+          arr.push(items[i]);
+        }
+        console.log(arr);
+        setMovies(arr);
+      });
   }, []);
 
   const handleSum = () => {
@@ -73,18 +73,6 @@ const Home = () => {
       rating: splitData[2],
     };
     addToFavs(movie);
-    // e.target.classList.add('dragOver');
-    // const id = e.dataTransfer.getData('text');
-    // const element = document.getElementById(id);
-    // console.log(id);
-    // console.log(element);
-    // e.dataTransfer.effectAllowed = "copy";
-    // e.target.appendChild(element);
-    // const movies = document.querySelector('.Movies');
-    // const div = document.createElement('div');
-    // div.className = 'Movies-favs';
-    // movies.appendChild(div);
-    // element.parentElement.classList.add('dropped');
   };
 
   if (moviesList === null) {
@@ -106,13 +94,13 @@ const Home = () => {
         <section className="Movies">
           {state.favs.map((item) => (
             <div key={Math.random()} className="Movie-container">
-              {/* <figure className="Movie-figure">
+              <figure className="Movie-figure">
                 <img
                   className="Movie-image"
                   src={item.image}
                   alt={item.title}
                 />
-              </figure> */}
+              </figure>
               <div>
                 <h2>{item.title}</h2>
                 <br />
@@ -125,12 +113,12 @@ const Home = () => {
         <section className="Movies">
           {moviesList.map((movie) => (
             <Movie
-              key={Math.random() + 'movie.id'}
-              id={'movie.id'}
-              title={'movie.title'}
-              image={'movie.image'}
-              year={'movie.year'}
-              rating={'movie.imDbRating'}
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              image={movie.image}
+              year={movie.year}
+              rating={movie.imDbRating}
             />
           ))}
           {state.cart.length !== 0 && <h2 className="Section-title">Cart</h2>}
@@ -138,13 +126,13 @@ const Home = () => {
         <section className="Movies">
           {state.cart.map((item) => (
             <div key={Math.random()} className="Movie-container">
-              {/* <figure className="Movie-figure">
+              <figure className="Movie-figure">
                 <img
                   className="Movie-image"
                   src={item.image}
                   alt={item.title}
                 />
-              </figure> */}
+              </figure>
               <div>
                 <h2>{item.title}</h2>
                 <br />
