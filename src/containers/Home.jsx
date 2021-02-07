@@ -4,7 +4,6 @@ import Movie from '../components/Movie.jsx';
 
 import Auth from '../authentification/AuthUsers';
 import AppContext from '../context/AppContext';
-import config from '../config';
 
 const Home = () => {
   const [moviesList, setMovies] = useState(null);
@@ -13,8 +12,9 @@ const Home = () => {
   const history = useHistory();
 
   const auth = new Auth();
-  const API = config.apiURL;
+  const API = `https://cross-platform.herokuapp.com/api/movies`;
 
+  console.log(API);
   useEffect(() => {
     fetch(API)
       .then((response) => response.json())
