@@ -7,17 +7,17 @@ const Movie = ({ id, title, image, year, rating }) => {
 
   const price = () => {
     if (ratingToNumber <= 2) {
-      return 50;
+      return 10;
     } else if (ratingToNumber > 5 && ratingToNumber <= 6) {
-      return 250;
+      return 20;
     } else if (ratingToNumber > 7 && ratingToNumber <= 8) {
-      return 350;
+      return 30;
     } else if (ratingToNumber > 8 && ratingToNumber <= 9) {
-      return 400;
+      return 40;
     } else if (ratingToNumber > 9 && ratingToNumber <= 10) {
-      return 500;
+      return 50;
     } else {
-      return 100;
+      return 10;
     }
   };
 
@@ -60,7 +60,7 @@ const Movie = ({ id, title, image, year, rating }) => {
         <span>Rating: {rating}</span>
         <br />
         <span>
-          Price:{' $'} {price()}
+          Price: ${price()}
         </span>
       </div>
       <button onClick={handleClick}>Buy</button>

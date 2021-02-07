@@ -42,7 +42,7 @@ const Home = () => {
   const handleClick = () => {
     const total = handleSum();
     addTotal(total);
-    history.push('/checkout/payment');
+    history.push('/checkout/user-information');
   }
 
   const dragOver = (e) => {
@@ -148,7 +148,7 @@ const Home = () => {
               <div>
                 <h2>{item.title}</h2>
                 <br />
-                <span>Price: {item.price}</span>
+                <span>Price: ${item.price}</span>
               </div>
             </div>
           ))}

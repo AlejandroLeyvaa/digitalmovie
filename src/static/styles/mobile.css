@@ -191,7 +191,52 @@ main section {
   border-radius: 10px;
 }
 
+
+/* Information */
+
+.Information {
+	color: var(--secondary-light);
+	padding: 0 1.6rem;
+}
+
+.Information-form label{
+  display: flex;
+  flex-direction: column;
+  margin: 1.6rem 0;
+}
+
+.Information-form label span {
+  margin-bottom: 0.8rem;
+}
+
+.Information .Form-input {
+  height: 32px;
+}
+
+.Information .Form-input::placeholder {
+  color: var(--primary-light);
+}
+
+.Information .Form-input[type='text'] {
+  color: var(--secondary-color);
+}
+
+.Information-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Information-buttons button {
+  width: 64px;
+}
+
 /* Payment */
+
+.Payment #papayl-button {
+  display: flex;
+  justify-content: center;
+  margin: 1.6rem 0;
+}
 
 .Payment-movies {
   min-width: 320px;

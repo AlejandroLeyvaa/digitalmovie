@@ -33,12 +33,28 @@ const useInitialState = () => {
     });
   };
 
+  const addToBuyer = (payload) => {
+    setState({
+      ...state,
+      buyer: Object.assign(state.buyer, payload)
+    });
+  };
+
+  const addNewOrder = (payload) => {
+    setState({
+      ...state,
+      orders: [...state.orders, payload]
+    });
+  };
+
   return {
     state,
     addToCart,
     addToFavs,
     addTotal,
-    removeItem
+    removeItem,
+    addToBuyer,
+    addNewOrder
   };
 };
 
