@@ -84,12 +84,12 @@ const Payment = () => {
         <div className="Payment-movies">
           {cart.map((item, index) => (
             <div className="Payment-item" key={Math.random()}>
-              <div>
-                <h2>{item.title}</h2>
-              </div>
               <figure>
                 <img src={item.image} alt={item.title} />
               </figure>
+              <div>
+                <h2>{item.title}</h2>
+              </div>
               <div>
                 <button onClick={handleRemove(item, index)}>Delete</button>
               </div>

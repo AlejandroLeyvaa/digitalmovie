@@ -13,12 +13,12 @@ const Information = () => {
       name: formData.get('name'),
       lastname: formData.get('lastname'),
       email: formData.get('email'),
-      address: formData.get('address'),
-      city: formData.get('city'),
-      country: formData.get('country'),
-      state: formData.get('state'),
-      cp: formData.get('cp'),
-      phone: formData.get('phone'),
+      // address: formData.get('address'),
+      // city: formData.get('city'),
+      // country: formData.get('country'),
+      // state: formData.get('state'),
+      // cp: formData.get('cp'),
+      // phone: formData.get('phone'),
     };
     addToBuyer(buyer);
     history.push('/checkout/payment');
@@ -59,7 +59,7 @@ const Information = () => {
                 name="email"
               />
             </label>
-            <label htmlFor="country">
+            {/* <label htmlFor="country">
               <span aria-label="Country">Country</span>
               <input
                 className="Form-input"
@@ -112,7 +112,7 @@ const Information = () => {
                 placeholder="667"
                 name="phone"
               />
-            </label>
+            </label> */}
           </form>
         </div>
         <div className="Information-buttons">

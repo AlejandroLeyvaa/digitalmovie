@@ -76,7 +76,12 @@ const Home = () => {
   };
 
   if (moviesList === null) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="Loading">
+        <span className="Title">Digital</span>
+        <span className="Title">Movie</span>
+      </div>
+    );
   } else {
     return (
       <>
@@ -123,7 +128,7 @@ const Home = () => {
           ))}
           {state.cart.length !== 0 && <h2 className="Section-title">Cart</h2>}
         </section>
-        <section className="Movies">
+        <section className="Movies Buy">
           {state.cart.map((item) => (
             <div key={Math.random()} className="Movie-container">
               <figure className="Movie-figure">
