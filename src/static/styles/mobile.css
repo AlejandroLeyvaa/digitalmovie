@@ -326,7 +326,11 @@ main section {
 }
 
 .Payment-total {
-  padding: 1.6rem;
+  margin: 1.6rem;
+}
+
+.Payment-total h2 {
+  margin: 1.6rem 0;
 }
 
 .Payment-total .Payment-total-button {
@@ -349,6 +353,24 @@ main section {
   width: 100%;
 }
 
+.Success-info h2, .Success-info h3{
+  margin: 0.8rem 0;
+}
+
+/* .Success-info-table {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.Success-info-table {
+	display: grid;
+	justify-content: space-between;
+	grid-template-columns: 1fr 1fr;
+}
+
+.Success-info-table h2:nth-child(2) {
+  text-align: end;
+}
 .empty {
   color: var(--secondary-dark);
   border: 1px dashed;

@@ -69,7 +69,7 @@ const Payment = () => {
         )}
         {cart.length > 0 && (
           <div className="Payment-total">
-            <h2>Total: {total}</h2>
+            <h2>Total: ${total} USD</h2>
             <PayPalButton
             paypalOptions={paypalOptions}
             buttonStyles={buttonStyles}
